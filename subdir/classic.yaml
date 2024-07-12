@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-app
+  namespace: default
+data:
+  color: red
+  state: '{{ fromSecret "default" "my-secret" "state" | b64dec }}'
