@@ -1,0 +1,9 @@
+{{- range $ns := (lookup "v1" "Namespace" "" "").items }}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ $ns.metadata.name }}
+  labels:
+    i-am-from: template
+{{- end }}
