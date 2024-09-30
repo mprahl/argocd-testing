@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: my-app-configs
   labels:
-    city: '{{ fromSecret "default" "my-secret" "city" | b64dec }}'
+    city: '{{ (lookup "v1" "Secret" "default" "my-secret").data.city | b64dec }}'

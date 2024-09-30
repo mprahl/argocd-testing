@@ -5,4 +5,4 @@ metadata:
   namespace: default
 data:
   color: red
-  state: '{{ fromSecret "default" "my-secret" "state" | b64dec }}'
+  state: '{{ (lookup "v1" "Secret" "default" "my-secret").data.state | b64dec }}'
