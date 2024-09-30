@@ -1,4 +1,5 @@
 {{- range $ns := (lookup "v1" "Namespace" "" "").items }}
+{{- if hasPrefix "kube-" $ns.metadata.name }}
 ---
 apiVersion: v1
 kind: Namespace
@@ -6,4 +7,5 @@ metadata:
   name: {{ $ns.metadata.name }}
   labels:
     i-am-from: template
+{{- end }}
 {{- end }}
