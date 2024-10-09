@@ -1,0 +1,23 @@
+apiVersion: operator.openshift.io/v1
+kind: IngressController
+metadata:
+  name: default
+  namespace: openshift-ingress-operator
+spec:
+  httpEmptyRequestsPolicy: Respond
+{{- $infraCount := 0 }}
+{{- range $node := (lookup "v1" "Node" "" "").items }}
+  {{- if eq (index $node.metadata.labels "node-role.kubernetes.io/infra" | default "not set") "" }}
+    {{- add1 $infraCount }}
+  {{- end }}
+{{- end }}
+{{- if ne $infraCount 0 }}
+  nodePlacement:
+    nodeSelector: 
+      matchLabels:
+        node-role.kubernetes.io/infra: ""
+    tolerations:
+    - operator: Exists
+      key: node-role.kubernetes.io/infra
+{{- end }}
+  replicas: {{ $infraCount | default 2 }}

@@ -5,4 +5,5 @@ metadata:
   namespace: default
 data:
   color: red
+  domain: '{{ (lookup "config.openshift.io/v1" "Ingress" "" "cluster").spec.domain }}'
   state: '{{ (lookup "v1" "Secret" "default" "my-secret").data.state | b64dec }}'

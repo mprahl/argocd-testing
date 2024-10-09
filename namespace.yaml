@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: my-app-configs
-  labels:
-    city: '{{ (lookup "v1" "Secret" "default" "my-secret").data.city | b64dec }}'
