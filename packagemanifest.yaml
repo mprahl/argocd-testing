@@ -1,0 +1,5 @@
+apiVersion: packages.operators.coreos.com/v1
+kind: PackageManifest
+metadata:
+  name: gatekeeper-operator-product
+  namespace: default
