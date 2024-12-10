@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: classic-car
-  namespace: my-configmaps
-data:
-  make: Ford
-  model: Shelby Mustang GT 500
-  year: "1969"

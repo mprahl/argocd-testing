@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: current-car
-  namespace: my-configmaps
-data:
-  make: Ford
-  model: Escape
-  year: "2016"
